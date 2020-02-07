@@ -1,2 +1,2 @@
 # Onirico
-Coursework project for Game Design and Development (DES502)
+Game Design and Development Course Project 2020
