@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour
     // Reference for animator component
     Animator animator = null;
 
+    GlobalVariables globalVariables = null;                     // Reference to global variables.
+
     // Unity Methods
     void Start()
     {
@@ -63,6 +65,8 @@ public class PlayerController : MonoBehaviour
         playerCamera = Camera.main;
         rigidBody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+
+        globalVariables = GameObject.FindObjectOfType<GlobalVariables>();
     }
     void Update()
     {
@@ -108,7 +112,8 @@ public class PlayerController : MonoBehaviour
         float velInput = Mathf.Clamp((new Vector2(input.forward, input.sideward)).magnitude, 0.0f, 1.0f);
         velocity.z = velInput * moveSettings.forwardVel;
         // Update animator
-        animator.SetFloat("MoveSpeed", velocity.z);
+        globalVariables.moveSpeed = velocity.z;
+        animator.SetFloat("MoveSpeed", globalVariables.moveSpeed);
     }
     // Method processing the player turning
     void Turn()
