@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
     Vector3 velocity = Vector3.zero;
     // Store if the player is grounded
     bool grounded = false;
+    // Store if the player is crouching
+    bool crouching = false;
     // Stores the raycast hit to the ground
     RaycastHit groundHit = new RaycastHit();
     // Is set if the player is during a jump
@@ -51,12 +53,16 @@ public class PlayerController : MonoBehaviour
     CharacterInput input = new CharacterInput();
     // Reference to camera
     Camera playerCamera;
-    // Rigidbody component
+    // rigidBody component
     Rigidbody rigidBody = null;
     // Reference for animator component
     Animator animator = null;
-
-    GlobalVariables globalVariables = null;                     // Reference to global variables.
+    // Reference to global variables.
+    GlobalVariables globalVariables = null;
+    // Capsule collider
+    CapsuleCollider capsule;
+    // constants
+    const float k_Half = 0.5f;
 
     // Unity Methods
     void Start()
@@ -92,6 +98,7 @@ public class PlayerController : MonoBehaviour
         // Set velocity in player look direction (rotation)
         rigidBody.velocity = playerRotation * new Vector3(0.0f, 0.0f, velocity.z)
                             + new Vector3(0.0f, velocity.y, 0.0f);
+
     }
 
     // Gets control input
@@ -102,6 +109,7 @@ public class PlayerController : MonoBehaviour
         // Keep jump value at 1.0f till it gets recognized by the Jump() function
         if (input.jump == 0.0f)
             input.jump = Input.GetAxis("Jump");
+        bool crouch = Input.GetKey(KeyCode.C);
     }
 
     // Method processing the running according to the forward (and sideward) input
@@ -111,6 +119,7 @@ public class PlayerController : MonoBehaviour
         // Adjusting the look direction is done in the Turn() function
         float velInput = Mathf.Clamp((new Vector2(input.forward, input.sideward)).magnitude, 0.0f, 1.0f);
         velocity.z = velInput * moveSettings.forwardVel;
+        if (Input.GetKey(KeyCode.LeftShift)) velocity.z *= 0.25f;
         // Update animator
         globalVariables.moveSpeed = velocity.z;
         animator.SetFloat("MoveSpeed", globalVariables.moveSpeed);
@@ -183,6 +192,44 @@ public class PlayerController : MonoBehaviour
         {
             // Not grounded
             grounded = false;
+        }
+    }
+
+    void ScaleCapsuleForCrouching(bool crouch)
+    {
+        if (grounded && crouch)
+        {
+            if (crouching) return;
+            capsule.height = capsule.height / 2f;
+            capsule.center = capsule.center / 2f;
+            crouching = true;
+        }
+        else
+        {
+            Ray crouchRay = new Ray(rigidBody.position + Vector3.up * capsule.radius * k_Half, Vector3.up);
+            float crouchRayLength = capsule.height - capsule.radius * k_Half;
+            if (Physics.SphereCast(crouchRay, capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+            {
+                crouching = true;
+                return;
+            }
+            capsule.height = capsule.height;
+            capsule.center = capsule.center;
+            crouching = false;
+        }
+    }
+
+    void PreventStandingInLowHeadroom()
+    {
+        // prevent standing up in crouch-only zones
+        if (!crouching)
+        {
+            Ray crouchRay = new Ray(rigidBody.position + Vector3.up * capsule.radius * k_Half, Vector3.up);
+            float crouchRayLength = capsule.height - capsule.radius * k_Half;
+            if (Physics.SphereCast(crouchRay, capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+            {
+                crouching = true;
+            }
         }
     }
 }
