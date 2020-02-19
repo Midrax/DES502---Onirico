@@ -72,6 +72,8 @@
     <Compile Include="Assets\Standard Assets\Cameras\Scripts\ProtectCameraFromWallClip.cs" />
     <Compile Include="Assets\Standard Assets\Cameras\Scripts\TargetFieldOfView.cs" />
     <Compile Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\AICharacterControl.cs" />
+    <Compile Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\CommonVariables.cs" />
+    <Compile Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\SightController.cs" />
     <Compile Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonCharacter.cs" />
     <Compile Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonUserControl.cs" />
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />

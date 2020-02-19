@@ -285,9 +285,17 @@
 /define:ENABLE_LEGACY_INPUT_MANAGER
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
+"Assets\Standard Assets\Cameras\Scripts\AbstractTargetFollower.cs"
+"Assets\Standard Assets\Cameras\Scripts\AutoCam.cs"
 "Assets\Standard Assets\Cameras\Scripts\FreeLookCam.cs"
+"Assets\Standard Assets\Cameras\Scripts\HandHeldCam.cs"
+"Assets\Standard Assets\Cameras\Scripts\LookatTarget.cs"
+"Assets\Standard Assets\Cameras\Scripts\PivotBasedCameraRig.cs"
 "Assets\Standard Assets\Cameras\Scripts\ProtectCameraFromWallClip.cs"
+"Assets\Standard Assets\Cameras\Scripts\TargetFieldOfView.cs"
 "Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\AICharacterControl.cs"
+"Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\CommonVariables.cs"
+"Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\SightController.cs"
 "Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonCharacter.cs"
 "Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonUserControl.cs"
 "Assets\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs"
