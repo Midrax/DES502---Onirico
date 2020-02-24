@@ -10,7 +10,7 @@ public class SimpleCameraController : MonoBehaviour
     public float distance = 4.0f;
 
     // camera rotation script
-    private const float Y_ANGLE_MIN = 0.0f;
+    private const float Y_ANGLE_MIN = 5.0f;
     private const float Y_ANGLE_MAX = 50.0f;
 
     private float currentX = 0.0f;
@@ -21,7 +21,7 @@ public class SimpleCameraController : MonoBehaviour
     void Update()
     {
         currentX += Input.GetAxis("Mouse X");
-        currentY += Input.GetAxis("Mouse Y");
+        currentY -= Input.GetAxis("Mouse Y");
 
         currentY = Mathf.Clamp(currentY, Y_ANGLE_MIN, Y_ANGLE_MAX);
     }

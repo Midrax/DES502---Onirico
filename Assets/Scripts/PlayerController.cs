@@ -45,6 +45,9 @@ public class PlayerController : MonoBehaviour
     bool grounded = false;
     // Store if the player is crouching
     bool crouching = false;
+    bool crouchingInput = false;
+    float capsuleHeight;
+    Vector3 capsuleCenter;
     // Stores the raycast hit to the ground
     RaycastHit groundHit = new RaycastHit();
     // Is set if the player is during a jump
@@ -71,7 +74,9 @@ public class PlayerController : MonoBehaviour
         playerCamera = Camera.main;
         rigidBody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-
+        capsule = GetComponent<CapsuleCollider>();
+        capsuleHeight = capsule.height;
+        capsuleCenter = capsule.center;
         globalVariables = GameObject.FindObjectOfType<GlobalVariables>();
     }
     void Update()
@@ -88,6 +93,7 @@ public class PlayerController : MonoBehaviour
         // Process player running and jumping
         Run();
         Jump();
+        Crouch();
         // Player rotation (on XZ-plane)
         Quaternion playerRotation = transform.rotation;
         // Adjust movement to move along the surface normal of the ground (reduces falling when walking on slopes)
@@ -109,7 +115,7 @@ public class PlayerController : MonoBehaviour
         // Keep jump value at 1.0f till it gets recognized by the Jump() function
         if (input.jump == 0.0f)
             input.jump = Input.GetAxis("Jump");
-        bool crouch = Input.GetKey(KeyCode.C);
+        crouchingInput = Input.GetKey(KeyCode.C);
     }
 
     // Method processing the running according to the forward (and sideward) input
@@ -123,6 +129,18 @@ public class PlayerController : MonoBehaviour
         // Update animator
         globalVariables.moveSpeed = velocity.z;
         animator.SetFloat("MoveSpeed", globalVariables.moveSpeed);
+    }
+
+    void Crouch()
+    {
+        ScaleCapsuleForCrouching(crouchingInput);
+        animator.SetBool("IsCrouching", crouchingInput);
+        if (crouchingInput)
+        {
+            velocity.z *= 0.25f;
+            globalVariables.moveSpeed = velocity.z;
+            animator.SetFloat("MoveSpeed", globalVariables.moveSpeed);
+        }
     }
     // Method processing the player turning
     void Turn()
@@ -213,8 +231,8 @@ public class PlayerController : MonoBehaviour
                 crouching = true;
                 return;
             }
-            capsule.height = capsule.height;
-            capsule.center = capsule.center;
+            capsule.height = capsuleHeight;
+            capsule.center = capsuleCenter;
             crouching = false;
         }
     }

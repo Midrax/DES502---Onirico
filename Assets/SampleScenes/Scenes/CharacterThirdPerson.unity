@@ -107,8 +107,8 @@ NavMeshSettings:
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentSlope: 50
+    agentClimb: 0.8
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -220,7 +220,7 @@ PrefabInstance:
       objectReference: {fileID: 1245232439}
     - target: {fileID: 11402594, guid: 54eb5844754051b40a918a84c33b7c1a, type: 3}
       propertyPath: chaseSpeed
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11402594, guid: 54eb5844754051b40a918a84c33b7c1a, type: 3}
       propertyPath: patrolSpeed
@@ -699,6 +699,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 149790, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30
@@ -2326,7 +2330,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: -1.09e-42, y: NaN, z: 3.1e-44, w: 4.5918e-41}
+  m_BoundingSphereOverride: {x: NaN, y: 1.0490924e+11, z: 4.5905e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
