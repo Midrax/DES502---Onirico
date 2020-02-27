@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableBase : MonoBehaviour
+public class SoundInteractable : MonoBehaviour
 {
+    AudioSource audio;
     Collider collider;
-    GlobalVariables globalVariables;
+    public GlobalVariables globalVariables;
 
     bool canInteract = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         collider = GetComponent<Collider>();
-        globalVariables = GameObject.FindObjectOfType<GlobalVariables>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Interact();
@@ -26,7 +26,7 @@ public class InteractableBase : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            globalVariables.interactionText.text = "Press[E] to Interact";
+            globalVariables.changeText("Press[E] to Interact");
             canInteract = true;
         }
     }
@@ -35,26 +35,28 @@ public class InteractableBase : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            globalVariables.interactionText.text = "";
+            globalVariables.changeText("");
             canInteract = false;
         }
     }
 
 
-    public void Interact() 
-    { 
-        if (canInteract) 
+    public void Interact()
+    {
+        if (canInteract)
         {
-            if (Input.GetKey(KeyCode.E)) 
+            if (Input.GetKey(KeyCode.E))
             {
                 DoInteraction();
             }
         }
     }
 
-    public void DoInteraction()
+    void DoInteraction() 
     {
-
+        if (!audio.isPlaying)
+        {
+            audio.Play(0);
+        }
     }
-
 }

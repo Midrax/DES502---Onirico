@@ -9,6 +9,10 @@ public class GlobalVariables : MonoBehaviour
     public Vector3 resetPlayerPosition = new Vector3(1000f, 1000f, 1000f);    // The default position if the player is not in sight.
 
     public float moveSpeed = 0f;
-
     public Text interactionText;
+
+    public void changeText(string s)
+    {
+        interactionText.text = s;
+    }
 }
