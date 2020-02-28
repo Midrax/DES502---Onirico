@@ -50,9 +50,10 @@ public class EnemyViewController : MonoBehaviour
         {
             // By default the player is not in sight.
             playerInSight = false;
-
+            Vector3 v = other.transform.position;
+            v.y -= 0.5f;
             // Create a vector from the enemy to the player and store the angle between it and forward.
-            Vector3 direction = other.transform.position - transform.position;
+            Vector3 direction = v - transform.position;
             float angle = Vector3.Angle(direction, transform.forward);
 
             // If the angle between forward and where the player is, is less than half the angle of view...
@@ -60,9 +61,9 @@ public class EnemyViewController : MonoBehaviour
             {
                 RaycastHit hit;
                 // ... and if a raycast towards the player hits something...
-                if (Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, hearingRadius.radius))
+                if (Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, hearingRadius.height))
                 {
-                    Debug.DrawLine(transform.position, hit.point, Color.red);
+                    Debug.DrawLine(transform.position + transform.up, hit.point, Color.red);
                     // ... and if the raycast hits the player...
                     if (hit.collider.gameObject == player)
                     {
