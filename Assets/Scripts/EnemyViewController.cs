@@ -59,10 +59,10 @@ public class EnemyViewController : MonoBehaviour
             if (angle < fieldOfViewAngle * 0.5f)
             {
                 RaycastHit hit;
-
                 // ... and if a raycast towards the player hits something...
-                if (Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, hearingRadius.height))
+                if (Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, hearingRadius.radius))
                 {
+                    Debug.DrawLine(transform.position, hit.point, Color.red);
                     // ... and if the raycast hits the player...
                     if (hit.collider.gameObject == player)
                     {
