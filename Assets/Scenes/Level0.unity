@@ -2972,5 +2972,10 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4551800961962937892, guid: 5ab8be5ae5e9c854b88682eff3546587,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 11afb084f0f677442ad795eb8bf5d6a5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ab8be5ae5e9c854b88682eff3546587, type: 3}
