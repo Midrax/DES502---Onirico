@@ -64,11 +64,9 @@
   <ItemGroup>
     <Compile Include="Assets\Standard Assets\Cameras\Scripts\AbstractTargetFollower.cs" />
     <Compile Include="Assets\Standard Assets\Cameras\Scripts\AutoCam.cs" />
-    <Compile Include="Assets\Standard Assets\Cameras\Scripts\FreeLookCam.cs" />
     <Compile Include="Assets\Standard Assets\Cameras\Scripts\HandHeldCam.cs" />
     <Compile Include="Assets\Standard Assets\Cameras\Scripts\LookatTarget.cs" />
     <Compile Include="Assets\Standard Assets\Cameras\Scripts\PivotBasedCameraRig.cs" />
-    <Compile Include="Assets\Standard Assets\Cameras\Scripts\ProtectCameraFromWallClip.cs" />
     <Compile Include="Assets\Standard Assets\Cameras\Scripts\TargetFieldOfView.cs" />
     <Compile Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\AICharacterControl.cs" />
     <Compile Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\CommonVariables.cs" />

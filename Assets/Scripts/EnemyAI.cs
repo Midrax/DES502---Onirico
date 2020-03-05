@@ -26,6 +26,7 @@ public class EnemyAI : MonoBehaviour
         // Setting up the references.
         EnemyViewController = GetComponent<EnemyViewController>();
         nav = GetComponent<NavMeshAgent>();
+        nav.baseOffset = 0;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         GlobalVariables = GameObject.FindGameObjectWithTag("GameController").GetComponent<GlobalVariables>();
     }
