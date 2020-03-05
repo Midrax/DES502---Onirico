@@ -3,7 +3,32 @@ guid: 1ee454663b823624fb873ba6a594ba0e
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Concrete_Low1
+    second: {fileID: 2100000, guid: 07d8a39d946ad1f48b95bfeaba71c7da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MetalStrut2_Low1
+    second: {fileID: 2100000, guid: 5217263e1bd74fb4a8e4215f6f914ed8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MetalStrut3_Low1
+    second: {fileID: 2100000, guid: c9ef43707d2916f49966b37ff3acd837, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MetalStrut4_Low1
+    second: {fileID: 2100000, guid: a4a93844461c47a4ab2226710144694f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal_Strut1_Low
+    second: {fileID: 2100000, guid: b593b76f2a52a6b408771db8811978b6, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
