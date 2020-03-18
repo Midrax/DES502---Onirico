@@ -64,34 +64,34 @@ MonoBehaviour:
   active: 1
   m_AdvancedMode: 0
   mode:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 2
   toeStrength:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
     min: 0
     max: 1
   toeLength:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.5
     min: 0
     max: 1
   shoulderStrength:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
     min: 0
     max: 1
   shoulderLength:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.5
     min: 0
   shoulderAngle:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
     min: 0
     max: 1
   gamma:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
     min: 0.001
 --- !u!114 &-1981762924826368851
@@ -188,6 +188,7 @@ MonoBehaviour:
   - {fileID: -1981762924826368851}
   - {fileID: 2958283303148852484}
   - {fileID: -4639607307506783657}
+  - {fileID: -3463121206747151245}
 --- !u!114 &2958283303148852484
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -235,7 +236,7 @@ MonoBehaviour:
     min: 0
   albedo:
     m_OverrideState: 1
-    m_Value: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
+    m_Value: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1
@@ -248,7 +249,7 @@ MonoBehaviour:
     m_Value: 0
   meanHeight:
     m_OverrideState: 1
-    m_Value: 20
+    m_Value: 10
   anisotropy:
     m_OverrideState: 1
     m_Value: 0

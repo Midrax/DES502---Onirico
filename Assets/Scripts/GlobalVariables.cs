@@ -10,6 +10,7 @@ public class GlobalVariables : MonoBehaviour
 
     public float moveSpeed = 0f;
     public Text interactionText;
+    public bool isInteracting = false;
 
     public void changeText(string s)
     {
