@@ -54,9 +54,6 @@ public class SoundInteractable : MonoBehaviour
 
     void DoInteraction() 
     {
-        if (!audio.isPlaying)
-        {
-            audio.Play(0);
-        }
+        audio.Play(0);
     }
 }
