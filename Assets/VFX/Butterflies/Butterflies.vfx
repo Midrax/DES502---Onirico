@@ -452,7 +452,7 @@ MonoBehaviour:
     x: -1159
     y: -2000
     width: 5226
-    height: 4260
+    height: 4252
 --- !u!114 &114039173776085940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4499,8 +4499,8 @@ VisualEffectResource:
       VFX_HAS_INDIRECT_DRAW\n        uint indirectIndex = indirectBuffer.IncrementCounter();\n\t\tindirectBuffer[indirectIndex]
       = index;\n#endif\n#endif\n\t}\n}\n"
   - compute: 0
-    name: '[System 1]Left Wing'
-    source: "Shader \"Hidden/VFX/System 1/Left Wing\"\n{\n\tSubShader\n\t{\t\n\t\tCull
+    name: '[System 1]A Left Wing'
+    source: "Shader \"Hidden/VFX/System 1/(A) Left Wing\"\n{\n\tSubShader\n\t{\t\n\t\tCull
       Off\n\t\t\n\t\tTags { \"Queue\"=\"Transparent+0\" \"IgnoreProjector\"=\"True\"
       \"RenderType\"=\"Transparent\" }\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\tBlend
       One OneMinusSrcAlpha \n\t\tZTest LEqual\n\t\tZWrite Off\n\t\tCull Off\n\t\t\n\t\n\t\t\t\n\t\tHLSLINCLUDE\n\t\t#if
@@ -4516,13 +4516,13 @@ VisualEffectResource:
       VFX_USE_PIVOTY_CURRENT 1\n\t\t#define VFX_USE_PIVOTZ_CURRENT 1\n\t\t#define
       VFX_USE_SIZE_CURRENT 1\n\t\t#define VFX_USE_SCALEZ_CURRENT 1\n\t\t#define VFX_USE_AGE_CURRENT
       1\n\t\t#define VFX_COLORMAPPING_DEFAULT 1\n\t\t#define IS_TRANSPARENT_PARTICLE
-      1\n\t\t#define VFX_BLENDMODE_PREMULTIPLY 1\n\t\t#define USE_MOTION_VECTORS_PASS
-      1\n\t\t#define USE_CAST_SHADOWS_PASS 1\n\t\t#define VFX_HAS_INDIRECT_DRAW 1\n\t\t#define
-      USE_FLIPBOOK 1\n\t\t#define HDRP_LIT 1\n\t\t#define HDRP_MATERIAL_TYPE_TRANSLUCENT
-      1\n\t\t#define HDRP_USE_BASE_COLOR_MAP 1\n\t\t#define HDRP_USE_BASE_COLOR_MAP_COLOR
-      1\n\t\t#define HDRP_USE_BASE_COLOR_MAP_ALPHA 1\n\t\t#define HDRP_USE_BASE_COLOR
-      1\n\t\t#define VFX_PRIMITIVE_QUAD 1\n\t\t\n\t\t\n\t\t\n\t\t#define VFX_LOCAL_SPACE
-      1\n\t\t#include \"Packages/com.unity.visualeffectgraph/Shaders/RenderPipeline/HDRP/VFXDefines.hlsl\"\n\t\t\n\n\t\tCBUFFER_START(parameters)\n\t\t
+      1\n\t\t#define VFX_BLENDMODE_ALPHA 1\n\t\t#define USE_MOTION_VECTORS_PASS 1\n\t\t#define
+      USE_CAST_SHADOWS_PASS 1\n\t\t#define VFX_HAS_INDIRECT_DRAW 1\n\t\t#define USE_FLIPBOOK
+      1\n\t\t#define HDRP_LIT 1\n\t\t#define HDRP_MATERIAL_TYPE_TRANSLUCENT 1\n\t\t#define
+      HDRP_USE_BASE_COLOR_MAP 1\n\t\t#define HDRP_USE_BASE_COLOR_MAP_COLOR 1\n\t\t#define
+      HDRP_USE_BASE_COLOR_MAP_ALPHA 1\n\t\t#define HDRP_USE_BASE_COLOR 1\n\t\t#define
+      VFX_PRIMITIVE_QUAD 1\n\t\t\n\t\t\n\t\t\n\t\t#define VFX_LOCAL_SPACE 1\n\t\t#include
+      \"Packages/com.unity.visualeffectgraph/Shaders/RenderPipeline/HDRP/VFXDefines.hlsl\"\n\t\t\n\n\t\tCBUFFER_START(parameters)\n\t\t
       \   float uniform_b;\n\t\t    float Angle_d;\n\t\t    uint2 PADDING_0;\n\t\tCBUFFER_END\n\t\tTexture2D
       baseColorMap;\n\t\tSamplerState samplerbaseColorMap;\n\t\t\n\n\t\t\n\t\t#define
       VFX_NEEDS_COLOR_INTERPOLATOR (VFX_USE_COLOR_CURRENT || VFX_USE_ALPHA_CURRENT)\n\t\t\n\t\tByteAddressBuffer
@@ -4532,7 +4532,7 @@ VisualEffectResource:
       nbMax;\n\t\t\tfloat systemSeed;\n\t\tCBUFFER_END\n\t\t\n\t\tENDHLSL\n\t\t\n\n\t\t\n\t\t\n\t\t//
       Forward pass\n\t\tPass\n\t\t{\t\t\n\t\t\tTags { \"LightMode\"=\"Forward\"}\n\t\t\t\t\t\n\t\t\tHLSLPROGRAM\n\t\t\t#pragma
       target 4.5\n\t\t\t\n\t\t\t#define UNITY_MATERIAL_LIT\n\t\t\t#define LIGHTLOOP_TILE_PASS\n\t\t\t#define
-      _ENABLE_FOG_ON_TRANSPARENT\n\t\t\t#define _DISABLE_DECALS\n\t\t\t#define _BLENDMODE_PRE_MULTIPLY\n\t\t\t#define
+      _ENABLE_FOG_ON_TRANSPARENT\n\t\t\t#define _DISABLE_DECALS\n\t\t\t#define _BLENDMODE_ALPHA\n\t\t\t#define
       _SURFACE_TYPE_TRANSPARENT\n\t\t\t\n\n\t\t\t#pragma multi_compile USE_FPTL_LIGHTLIST
       USE_CLUSTERED_LIGHTLIST \n\t\t\t#pragma multi_compile SHADOW_LOW SHADOW_MEDIUM
       SHADOW_HIGH SHADOW_VERY_HIGH\n\t\t\t#pragma multi_compile _ DEBUG_DISPLAY\n\t\t\t//#pragma
@@ -4746,8 +4746,8 @@ VisualEffectResource:
       out BSDFData bsdfData, out PreLightData preLightData, VFX_VARYING_PS_INPUTS
       i, float3 normalWS, const VFXUVData uvData, uint2 tileIndex)\n\t\t\t{\t\n\t\t\t\t#if
       HDRP_MATERIAL_TYPE_TRANSLUCENT\n\t\t\t\tuint diffusionProfileHash = (uint)0;\n\t\t\t\t{\n\t\t\t\t
-      \   \n\t\t\t\t    diffusionProfileHash = (uint)1076631242;\n\t\t\t\t}\n\t\t\t\t\n
-      // Loads diffusion profile\n\t\t\t\t#else\n\t\t\t\tconst uint diffusionProfileHash
+      \   \n\t\t\t\t    diffusionProfileHash = (uint)0;\n\t\t\t\t}\n\t\t\t\t\n //
+      Loads diffusion profile\n\t\t\t\t#else\n\t\t\t\tconst uint diffusionProfileHash
       = 0;\n\t\t\t\t#endif\n\t\t\t\t\n\t\t\t\tfloat3 posRWS = VFXGetPositionRWS(i);\n\t\t\t\tfloat4
       posSS = i.VFX_VARYING_POSCS;\n\t\t\t\tPositionInputs posInput = GetPositionInput(posSS.xy,
       _ScreenSize.zw, posSS.z, posSS.w, posRWS, tileIndex);\n\t\t\t\t\n\t\t\t\tfloat
@@ -4947,8 +4947,8 @@ VisualEffectResource:
       *= VFXGetTextureColor(VFX_SAMPLER(baseColorMap),i).a;\t\n\t\t#endif\n\t\t\t\tVFXClipFragmentColor(alpha,i);\n\t\t\n\t\t\t\treturn
       0;\n\t\t\t}\n\t\t\tENDHLSL\n\t\t}\n\t\t\n\n\t}\n}\n"
   - compute: 0
-    name: '[System 1]Right Wing'
-    source: "Shader \"Hidden/VFX/System 1/Right Wing\"\n{\n\tSubShader\n\t{\t\n\t\tCull
+    name: '[System 1]B Right Wing'
+    source: "Shader \"Hidden/VFX/System 1/(B) Right Wing\"\n{\n\tSubShader\n\t{\t\n\t\tCull
       Off\n\t\t\n\t\tTags { \"Queue\"=\"Transparent+0\" \"IgnoreProjector\"=\"True\"
       \"RenderType\"=\"Transparent\" }\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\tBlend
       One OneMinusSrcAlpha \n\t\tZTest LEqual\n\t\tZWrite Off\n\t\tCull Off\n\t\t\n\t\n\t\t\t\n\t\tHLSLINCLUDE\n\t\t#if
@@ -4964,12 +4964,12 @@ VisualEffectResource:
       VFX_USE_PIVOTY_CURRENT 1\n\t\t#define VFX_USE_PIVOTZ_CURRENT 1\n\t\t#define
       VFX_USE_SIZE_CURRENT 1\n\t\t#define VFX_USE_SCALEZ_CURRENT 1\n\t\t#define VFX_USE_AGE_CURRENT
       1\n\t\t#define VFX_COLORMAPPING_DEFAULT 1\n\t\t#define IS_TRANSPARENT_PARTICLE
-      1\n\t\t#define VFX_BLENDMODE_PREMULTIPLY 1\n\t\t#define USE_MOTION_VECTORS_PASS
-      1\n\t\t#define USE_CAST_SHADOWS_PASS 1\n\t\t#define VFX_HAS_INDIRECT_DRAW 1\n\t\t#define
-      USE_FLIPBOOK 1\n\t\t#define HDRP_LIT 1\n\t\t#define HDRP_MATERIAL_TYPE_TRANSLUCENT
-      1\n\t\t#define HDRP_USE_BASE_COLOR_MAP 1\n\t\t#define HDRP_USE_BASE_COLOR_MAP_COLOR
-      1\n\t\t#define HDRP_USE_BASE_COLOR_MAP_ALPHA 1\n\t\t#define HDRP_USE_BASE_COLOR
-      1\n\t\t#define USE_DOUBLE_SIDED 1\n\t\t#define VFX_PRIMITIVE_QUAD 1\n\t\t\n\t\t\n\t\t\n\t\t#define
+      1\n\t\t#define VFX_BLENDMODE_ALPHA 1\n\t\t#define USE_MOTION_VECTORS_PASS 1\n\t\t#define
+      USE_CAST_SHADOWS_PASS 1\n\t\t#define VFX_HAS_INDIRECT_DRAW 1\n\t\t#define USE_FLIPBOOK
+      1\n\t\t#define HDRP_LIT 1\n\t\t#define HDRP_MATERIAL_TYPE_TRANSLUCENT 1\n\t\t#define
+      HDRP_USE_BASE_COLOR_MAP 1\n\t\t#define HDRP_USE_BASE_COLOR_MAP_COLOR 1\n\t\t#define
+      HDRP_USE_BASE_COLOR_MAP_ALPHA 1\n\t\t#define HDRP_USE_BASE_COLOR 1\n\t\t#define
+      USE_DOUBLE_SIDED 1\n\t\t#define VFX_PRIMITIVE_QUAD 1\n\t\t\n\t\t\n\t\t\n\t\t#define
       VFX_LOCAL_SPACE 1\n\t\t#include \"Packages/com.unity.visualeffectgraph/Shaders/RenderPipeline/HDRP/VFXDefines.hlsl\"\n\t\t\n\n\t\tCBUFFER_START(parameters)\n\t\t
       \   float uniform_b;\n\t\t    float Angle_d;\n\t\t    uint2 PADDING_0;\n\t\tCBUFFER_END\n\t\tTexture2D
       baseColorMap;\n\t\tSamplerState samplerbaseColorMap;\n\t\t\n\n\t\t\n\t\t#define
@@ -4980,7 +4980,7 @@ VisualEffectResource:
       nbMax;\n\t\t\tfloat systemSeed;\n\t\tCBUFFER_END\n\t\t\n\t\tENDHLSL\n\t\t\n\n\t\t\n\t\t\n\t\t//
       Forward pass\n\t\tPass\n\t\t{\t\t\n\t\t\tTags { \"LightMode\"=\"Forward\"}\n\t\t\t\t\t\n\t\t\tHLSLPROGRAM\n\t\t\t#pragma
       target 4.5\n\t\t\t\n\t\t\t#define UNITY_MATERIAL_LIT\n\t\t\t#define LIGHTLOOP_TILE_PASS\n\t\t\t#define
-      _ENABLE_FOG_ON_TRANSPARENT\n\t\t\t#define _DISABLE_DECALS\n\t\t\t#define _BLENDMODE_PRE_MULTIPLY\n\t\t\t#define
+      _ENABLE_FOG_ON_TRANSPARENT\n\t\t\t#define _DISABLE_DECALS\n\t\t\t#define _BLENDMODE_ALPHA\n\t\t\t#define
       _SURFACE_TYPE_TRANSPARENT\n\t\t\t\n\n\t\t\t#pragma multi_compile USE_FPTL_LIGHTLIST
       USE_CLUSTERED_LIGHTLIST \n\t\t\t#pragma multi_compile SHADOW_LOW SHADOW_MEDIUM
       SHADOW_HIGH SHADOW_VERY_HIGH\n\t\t\t#pragma multi_compile _ DEBUG_DISPLAY\n\t\t\t//#pragma
@@ -5194,8 +5194,8 @@ VisualEffectResource:
       out BSDFData bsdfData, out PreLightData preLightData, VFX_VARYING_PS_INPUTS
       i, float3 normalWS, const VFXUVData uvData, uint2 tileIndex)\n\t\t\t{\t\n\t\t\t\t#if
       HDRP_MATERIAL_TYPE_TRANSLUCENT\n\t\t\t\tuint diffusionProfileHash = (uint)0;\n\t\t\t\t{\n\t\t\t\t
-      \   \n\t\t\t\t    diffusionProfileHash = (uint)1076631242;\n\t\t\t\t}\n\t\t\t\t\n
-      // Loads diffusion profile\n\t\t\t\t#else\n\t\t\t\tconst uint diffusionProfileHash
+      \   \n\t\t\t\t    diffusionProfileHash = (uint)0;\n\t\t\t\t}\n\t\t\t\t\n //
+      Loads diffusion profile\n\t\t\t\t#else\n\t\t\t\tconst uint diffusionProfileHash
       = 0;\n\t\t\t\t#endif\n\t\t\t\t\n\t\t\t\tfloat3 posRWS = VFXGetPositionRWS(i);\n\t\t\t\tfloat4
       posSS = i.VFX_VARYING_POSCS;\n\t\t\t\tPositionInputs posInput = GetPositionInput(posSS.xy,
       _ScreenSize.zw, posSS.z, posSS.w, posRWS, tileIndex);\n\t\t\t\t\n\t\t\t\tfloat
@@ -5395,8 +5395,8 @@ VisualEffectResource:
       *= VFXGetTextureColor(VFX_SAMPLER(baseColorMap),i).a;\t\n\t\t#endif\n\t\t\t\tVFXClipFragmentColor(alpha,i);\n\t\t\n\t\t\t\treturn
       0;\n\t\t\t}\n\t\t\tENDHLSL\n\t\t}\n\t\t\n\n\t}\n}\n"
   - compute: 0
-    name: '[System 1]Lit Mesh Output'
-    source: "Shader \"Hidden/VFX/System 1/Lit Mesh Output\"\n{\n\tSubShader\n\t{\t\n\t\tCull
+    name: '[System 1]C Lit Mesh Output'
+    source: "Shader \"Hidden/VFX/System 1/(C) Lit Mesh Output\"\n{\n\tSubShader\n\t{\t\n\t\tCull
       Off\n\t\t\n\t\tTags { \"Queue\"=\"Transparent+0\" \"IgnoreProjector\"=\"True\"
       \"RenderType\"=\"Transparent\" }\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\t\n\t\tBlend
       One OneMinusSrcAlpha \n\t\tZTest LEqual\n\t\tZWrite Off\n\t\tCull Back\n\t\t\n\t\n\t\t\t\n\t\tHLSLINCLUDE\n\t\t#if
@@ -5926,18 +5926,18 @@ VisualEffectResource:
         data[1]: -1
         data[2]: -1
         data[3]: 1
-      - op: 1
+      - op: 7
         valueIndex: 23
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
-      - op: 7
+        data[3]: -1
+      - op: 1
         valueIndex: 24
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: -1
+        data[3]: 1
       - op: 1
         valueIndex: 25
         data[0]: -1
@@ -5955,145 +5955,145 @@ VisualEffectResource:
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
+        data[3]: 3
       - op: 3
-        valueIndex: 32
+        valueIndex: 34
         data[0]: 4
-        data[1]: 20
+        data[1]: 19
         data[2]: 4
         data[3]: -1
       - op: 1
-        valueIndex: 35
+        valueIndex: 37
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 3
+        data[3]: 1
       - op: 34
         valueIndex: 38
         data[0]: 24
-        data[1]: 21
-        data[2]: 22
+        data[1]: 22
+        data[2]: 23
         data[3]: -1
       - op: 1
         valueIndex: 54
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
+        data[3]: 3
       - op: 1
-        valueIndex: 55
+        valueIndex: 57
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 3
+        data[3]: 1
       - op: 1
         valueIndex: 58
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 59
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
         data[3]: 2
       - op: 1
-        valueIndex: 61
+        valueIndex: 60
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 1
       - op: 26
-        valueIndex: 62
+        valueIndex: 61
         data[0]: 15
-        data[1]: 27
+        data[1]: 28
         data[2]: -1
         data[3]: 1
       - op: 1
-        valueIndex: 63
+        valueIndex: 62
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 7
       - op: 1
-        valueIndex: 64
+        valueIndex: 63
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 2
+        data[3]: 3
       - op: 1
         valueIndex: 66
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 6
+        data[3]: 1
       - op: 1
         valueIndex: 67
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 3
+        data[3]: 2
       - op: 1
-        valueIndex: 70
+        valueIndex: 69
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 1
       - op: 1
-        valueIndex: 71
+        valueIndex: 70
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 2
       - op: 1
-        valueIndex: 73
+        valueIndex: 72
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 2
       - op: 1
-        valueIndex: 75
+        valueIndex: 74
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 2
       - op: 1
-        valueIndex: 77
+        valueIndex: 76
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 2
       - op: 1
-        valueIndex: 79
+        valueIndex: 78
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 3
       - op: 1
-        valueIndex: 82
+        valueIndex: 81
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 15
       - op: 1
-        valueIndex: 83
+        valueIndex: 82
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 6
       - op: 1
-        valueIndex: 84
+        valueIndex: 83
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 2
       - op: 1
-        valueIndex: 86
+        valueIndex: 85
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 2
+      - op: 1
+        valueIndex: 87
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 1
       - op: 1
         valueIndex: 88
         data[0]: -1
@@ -6112,44 +6112,38 @@ VisualEffectResource:
         data[1]: -1
         data[2]: -1
         data[3]: 1
-      - op: 1
-        valueIndex: 91
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
       - op: 6
-        valueIndex: 92
+        valueIndex: 91
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: -1
       - op: 36
-        valueIndex: 93
+        valueIndex: 92
         data[0]: 26
         data[1]: -1
         data[2]: -1
         data[3]: -1
       - op: 1
-        valueIndex: 109
+        valueIndex: 108
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 7
       - op: 1
-        valueIndex: 110
+        valueIndex: 109
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 6
       - op: 1
-        valueIndex: 111
+        valueIndex: 110
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 1
       - op: 9
-        valueIndex: 112
+        valueIndex: 111
         data[0]: -1
         data[1]: -1
         data[2]: -1
@@ -6169,11 +6163,11 @@ VisualEffectResource:
         - m_ExpressionIndex: 8
           m_Value: 4
         - m_ExpressionIndex: 9
-          m_Value: 18
-        - m_ExpressionIndex: 10
-          m_Value: -2
-        - m_ExpressionIndex: 11
           m_Value: 2
+        - m_ExpressionIndex: 10
+          m_Value: 18
+        - m_ExpressionIndex: 11
+          m_Value: -2
         - m_ExpressionIndex: 12
           m_Value: 22
         - m_ExpressionIndex: 13
@@ -6188,45 +6182,45 @@ VisualEffectResource:
           m_Value: 1
         - m_ExpressionIndex: 18
           m_Value: 120
-        - m_ExpressionIndex: 19
+        - m_ExpressionIndex: 20
           m_Value: 0.024
-        - m_ExpressionIndex: 23
+        - m_ExpressionIndex: 25
           m_Value: 20
-        - m_ExpressionIndex: 27
+        - m_ExpressionIndex: 28
           m_Value: 12
-        - m_ExpressionIndex: 29
-          m_Value: 0.3968326
-        - m_ExpressionIndex: 31
+        - m_ExpressionIndex: 30
           m_Value: 0.3
-        - m_ExpressionIndex: 37
+        - m_ExpressionIndex: 34
+          m_Value: 0.3968326
+        - m_ExpressionIndex: 36
           m_Value: 0.9199208
-        - m_ExpressionIndex: 47
+        - m_ExpressionIndex: 46
           m_Value: 0.45
-        - m_ExpressionIndex: 48
+        - m_ExpressionIndex: 47
           m_Value: 0.03
-        - m_ExpressionIndex: 49
+        - m_ExpressionIndex: 48
           m_Value: 0.8634909
-        - m_ExpressionIndex: 50
+        - m_ExpressionIndex: 49
           m_Value: 8
-        - m_ExpressionIndex: 55
+        - m_ExpressionIndex: 54
           m_Value: 6.2831855
       m_Vector2f:
         m_Array:
-        - m_ExpressionIndex: 30
+        - m_ExpressionIndex: 29
           m_Value: {x: 1, y: 1}
-        - m_ExpressionIndex: 34
+        - m_ExpressionIndex: 35
           m_Value: {x: 8, y: 1}
-        - m_ExpressionIndex: 38
+        - m_ExpressionIndex: 37
           m_Value: {x: 0.125, y: 1}
-        - m_ExpressionIndex: 39
+        - m_ExpressionIndex: 38
           m_Value: {x: 50, y: 50}
-        - m_ExpressionIndex: 40
+        - m_ExpressionIndex: 39
           m_Value: {x: 0.6, y: 1}
-        - m_ExpressionIndex: 41
+        - m_ExpressionIndex: 40
           m_Value: {x: 0, y: 0}
-        - m_ExpressionIndex: 45
+        - m_ExpressionIndex: 44
           m_Value: {x: 22, y: 0}
-        - m_ExpressionIndex: 46
+        - m_ExpressionIndex: 45
           m_Value: {x: 20, y: 0}
       m_Vector3f:
         m_Array:
@@ -6235,16 +6229,16 @@ VisualEffectResource:
         - m_ExpressionIndex: 3
           m_Value: {x: 0, y: 0.8, z: 0}
         - m_ExpressionIndex: 21
-          m_Value: {x: 0, y: 0, z: 0}
-        - m_ExpressionIndex: 22
-          m_Value: {x: 1, y: 1, z: 1}
-        - m_ExpressionIndex: 25
           m_Value: {x: -1, y: -1, z: -1}
-        - m_ExpressionIndex: 28
+        - m_ExpressionIndex: 22
+          m_Value: {x: 0, y: 0, z: 0}
+        - m_ExpressionIndex: 23
+          m_Value: {x: 1, y: 1, z: 1}
+        - m_ExpressionIndex: 27
           m_Value: {x: 0, y: 1, z: 0}
-        - m_ExpressionIndex: 36
+        - m_ExpressionIndex: 33
           m_Value: {x: 0.12, y: 0.12, z: 0.12}
-        - m_ExpressionIndex: 42
+        - m_ExpressionIndex: 41
           m_Value: {x: 4, y: 4, z: 4}
       m_Vector4f:
         m_Array: []
@@ -6252,11 +6246,9 @@ VisualEffectResource:
         m_Array:
         - m_ExpressionIndex: 6
           m_Value: 0
-        - m_ExpressionIndex: 35
-          m_Value: 1076631242
-        - m_ExpressionIndex: 44
+        - m_ExpressionIndex: 43
           m_Value: 4294967295
-        - m_ExpressionIndex: 54
+        - m_ExpressionIndex: 53
           m_Value: 2
       m_Int:
         m_Array: []
@@ -6268,25 +6260,25 @@ VisualEffectResource:
         m_Array: []
       m_NamedObject:
         m_Array:
-        - m_ExpressionIndex: 33
+        - m_ExpressionIndex: 32
           m_Value: {fileID: 2800000, guid: a9294f3c73bd98842a3deefd044b5697, type: 3}
-        - m_ExpressionIndex: 53
+        - m_ExpressionIndex: 52
           m_Value: {fileID: 10305, guid: 0000000000000000f000000000000000, type: 0}
-        - m_ExpressionIndex: 43
+        - m_ExpressionIndex: 42
           m_Value: {fileID: 4300000, guid: b73b3d8cce4689c42a4994bd3dbfb8d1, type: 2}
       m_Bool:
         m_Array: []
     m_ExposedExpressions:
     - nameId: FlapAmplitude
-      index: 48
+      index: 47
     - nameId: FlapMinMaxAngle
-      index: 46
-    - nameId: FlapMinMaxSpeed
       index: 45
+    - nameId: FlapMinMaxSpeed
+      index: 44
     - nameId: MaximumVelocity
       index: 17
     - nameId: TiltAngle
-      index: 27
+      index: 28
     m_Buffers:
     - type: 1
       size: 1114112
@@ -6489,9 +6481,9 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: Count
-        index: 39
+        index: 38
       - nameId: Delay
-        index: 41
+        index: 40
       params: []
       processor: {fileID: 0}
       shaderSourceIndex: -1
@@ -6514,9 +6506,9 @@ VisualEffectResource:
       index: 5
     values:
     - nameId: bounds_center
-      index: 21
+      index: 22
     - nameId: bounds_size
-      index: 42
+      index: 41
     tasks:
     - type: 536870912
       buffers:
@@ -6528,9 +6520,9 @@ VisualEffectResource:
       values: []
       params:
       - nameId: bounds_center
-        index: 21
+        index: 22
       - nameId: bounds_size
-        index: 42
+        index: 41
       processor: {fileID: 0}
       shaderSourceIndex: 0
     - type: 805306368
@@ -6544,9 +6536,9 @@ VisualEffectResource:
       - nameId: uniform_b
         index: 7
       - nameId: deltaTime_a
-        index: 51
+        index: 50
       - nameId: InvFieldTransform_b
-        index: 52
+        index: 51
       - nameId: FieldTransform_b
         index: 26
       - nameId: uniform_f
@@ -6565,7 +6557,7 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: localToWorld
-        index: 56
+        index: 55
       params: []
       processor: {fileID: 0}
       shaderSourceIndex: 5
@@ -6580,9 +6572,9 @@ VisualEffectResource:
       - nameId: uniform_b
         index: 7
       - nameId: Angle_d
-        index: 27
+        index: 28
       - nameId: baseColorMap
-        index: 33
+        index: 32
       params:
       - nameId: sortPriority
         index: 0
@@ -6601,9 +6593,9 @@ VisualEffectResource:
       - nameId: uniform_b
         index: 7
       - nameId: Angle_d
-        index: 32
+        index: 31
       - nameId: baseColorMap
-        index: 33
+        index: 32
       params:
       - nameId: sortPriority
         index: 0
@@ -6622,12 +6614,12 @@ VisualEffectResource:
       - nameId: uniform_b
         index: 7
       - nameId: baseColorMap
-        index: 53
+        index: 52
       params:
       - nameId: mesh
-        index: 43
+        index: 42
       - nameId: subMeshMask
-        index: 44
+        index: 43
       - nameId: sortPriority
         index: 0
       - nameId: indirectDraw
@@ -13303,7 +13295,7 @@ MonoBehaviour:
       slotIndex: 0
   m_OutputFlowSlot:
   - link: []
-  blendMode: 3
+  blendMode: 1
   m_SubOutputs:
   - {fileID: 8926484042661615056}
   cullMode: 0
@@ -13319,8 +13311,7 @@ MonoBehaviour:
   useExposureWeight: 0
   materialType: 2
   onlyAmbientLighting: 0
-  diffusionProfileAsset: {fileID: 11400000, guid: a6e49c92568d36640bf75bae8006ad8f,
-    type: 2}
+  diffusionProfileAsset: {fileID: 0}
   multiplyThicknessWithAlpha: 0
   useBaseColorMap: 3
   useMaskMap: 0
@@ -13627,7 +13618,7 @@ MonoBehaviour:
       slotIndex: 0
   m_OutputFlowSlot:
   - link: []
-  blendMode: 3
+  blendMode: 1
   m_SubOutputs:
   - {fileID: 8926484042661615057}
   cullMode: 0
@@ -13643,8 +13634,7 @@ MonoBehaviour:
   useExposureWeight: 0
   materialType: 2
   onlyAmbientLighting: 0
-  diffusionProfileAsset: {fileID: 11400000, guid: a6e49c92568d36640bf75bae8006ad8f,
-    type: 2}
+  diffusionProfileAsset: {fileID: 0}
   multiplyThicknessWithAlpha: 0
   useBaseColorMap: 3
   useMaskMap: 0
