@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
-
+    [SerializeField] Image alertBar = null;
+    [SerializeField] Image alertContainer = null;
+    [SerializeField] float alertTime = 5f;
     [SerializeField] float patrolSpeed = 2f;                // The nav mesh agent's speed when patrolling.
     [SerializeField] float chaseSpeed = 5f;                 // The nav mesh agent's speed when chasing.
     [SerializeField] float chaseWaitTime = 5f;              // The amount of time to wait when the last sighting is reached.
     [SerializeField] float patrolWaitTime = 1f;             // The amount of time to wait when the patrol way point is reached.
     [SerializeField] Transform[] patrolWayPoints = null;    // An array of transforms for the patrol route.
-
 
     EnemyViewController EnemyViewController = null;                           // Reference to the EnemyViewController script.
     NavMeshAgent nav = null;                                // Reference to the nav mesh agent.
@@ -18,7 +20,7 @@ public class EnemyAI : MonoBehaviour
 
     float chaseTimer = 0f;                                  // A timer for the chaseWaitTime.
     float patrolTimer = 0f;                                 // A timer for the patrolWaitTime.
-
+    bool isChasing = false;
     int wayPointIndex = 0;                                  // A counter for the way point array.
 
     void Awake()
@@ -29,6 +31,9 @@ public class EnemyAI : MonoBehaviour
         nav.baseOffset = 0;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         GlobalVariables = GameObject.FindGameObjectWithTag("GameController").GetComponent<GlobalVariables>();
+        alertBar.fillAmount = 0;
+        alertContainer.enabled = false;
+        alertBar.enabled = false;
     }
 
     void Update()
@@ -36,12 +41,21 @@ public class EnemyAI : MonoBehaviour
         // If the player is in sight and is alive...
         if (EnemyViewController.playerInSight)
         {
-            // ... shoot.
-            Attacking();
+            if (!isChasing)
+            {
+                alertContainer.enabled = true;
+                alertBar.enabled = true;
+                alertBar.fillAmount += Time.deltaTime / alertTime;
+            }
+            if (alertBar.fillAmount >= 1)
+            {
+                // ... chase.
+                Chasing();
+            }
         }
 
         // If the player has been sighted and isn't dead...
-        else if (EnemyViewController.personalLastSighting != GlobalVariables.resetPlayerPosition)
+        else if (EnemyViewController.personalLastSighting != GlobalVariables.resetPlayerPosition && alertBar.fillAmount >= 3/4)
         {
             // ... chase.
             Chasing();
@@ -63,6 +77,9 @@ public class EnemyAI : MonoBehaviour
 
     void Chasing()
     {
+        isChasing = true;
+        alertContainer.enabled = false;
+        alertBar.enabled = false;
         // Create a vector from the enemy to the last sighting of the player.
         Vector3 sightingDeltaPos = EnemyViewController.personalLastSighting - transform.position;
 
@@ -81,14 +98,23 @@ public class EnemyAI : MonoBehaviour
         {
             // ... increment the timer.
             chaseTimer += Time.deltaTime;
-
+            if (alertBar.fillAmount > 0 && !EnemyViewController.playerInSight)
+            {
+                alertContainer.enabled = true;
+                alertBar.enabled = true;
+                alertBar.fillAmount -= Time.deltaTime / chaseWaitTime;
+            }
             // If the timer exceeds the wait time...
             if (chaseTimer >= chaseWaitTime)
             {
                 // ... reset last global sighting, the last personal sighting and the timer.
+                alertBar.fillAmount = 0;
+                alertContainer.enabled = false;
+                alertBar.enabled = false;
                 GlobalVariables.playerPosition = GlobalVariables.resetPlayerPosition;
                 EnemyViewController.personalLastSighting = GlobalVariables.resetPlayerPosition;
                 chaseTimer = 0f;
+                isChasing = false;
             }
         }
         else
