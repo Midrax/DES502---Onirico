@@ -49,6 +49,7 @@ public class EnemyAI : MonoBehaviour
             }
             if (alertBar.fillAmount >= 1)
             {
+                alertBar.fillAmount = 1;
                 alertContainer.enabled = false;
                 alertBar.enabled = false;
                 isChasing = true;
@@ -60,7 +61,7 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
-        // If the player has been sighted and isn't dead...
+        // If the player is heard, but not seen
         else if (EnemyViewController.personalLastSighting != GlobalVariables.resetPlayerPosition)
         {
             if (EnemyViewController.playerIsHeard)

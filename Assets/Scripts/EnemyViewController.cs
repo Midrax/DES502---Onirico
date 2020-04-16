@@ -79,10 +79,10 @@ public class EnemyViewController : MonoBehaviour
                 }
             }
 
-            if (globalVariables.moveSpeed > minimumDetectableSpeed)
+            if (CalculatePathLength(player.transform.position) <= hearingRadius.radius)
             {
                 // ... and if the player is within hearing range...
-                if (CalculatePathLength(player.transform.position) <= hearingRadius.radius)
+                if (globalVariables.moveSpeed > minimumDetectableSpeed) 
                 {
                     // ... set the last personal sighting of the player to the player's current position.
                     playerIsHeard = true;
