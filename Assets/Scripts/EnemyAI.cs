@@ -49,15 +49,24 @@ public class EnemyAI : MonoBehaviour
             }
             if (alertBar.fillAmount >= 1)
             {
-                // ... chase.
+                alertContainer.enabled = false;
+                alertBar.enabled = false;
+                isChasing = true;
                 Chasing();
+            }
+            if (alertBar.fillAmount < 1)
+            {
+                isChasing = false;
             }
         }
 
         // If the player has been sighted and isn't dead...
-        else if (EnemyViewController.personalLastSighting != GlobalVariables.resetPlayerPosition && alertBar.fillAmount >= 3/4)
+        else if (EnemyViewController.personalLastSighting != GlobalVariables.resetPlayerPosition)
         {
-            // ... chase.
+            if (EnemyViewController.playerIsHeard)
+            {
+                alertBar.fillAmount = 1;
+            }
             Chasing();
         }
 
@@ -77,9 +86,6 @@ public class EnemyAI : MonoBehaviour
 
     void Chasing()
     {
-        isChasing = true;
-        alertContainer.enabled = false;
-        alertBar.enabled = false;
         // Create a vector from the enemy to the last sighting of the player.
         Vector3 sightingDeltaPos = EnemyViewController.personalLastSighting - transform.position;
 
@@ -94,11 +100,16 @@ public class EnemyAI : MonoBehaviour
         nav.speed = chaseSpeed;
 
         // If near the last personal sighting...
+        AlertedWait();
+    }
+
+    void AlertedWait()
+    {
         if (nav.remainingDistance < nav.stoppingDistance)
         {
             // ... increment the timer.
             chaseTimer += Time.deltaTime;
-            if (alertBar.fillAmount > 0 && !EnemyViewController.playerInSight)
+            if (alertBar.fillAmount > 0 && !EnemyViewController.playerInSight && !EnemyViewController.playerIsHeard)
             {
                 alertContainer.enabled = true;
                 alertBar.enabled = true;

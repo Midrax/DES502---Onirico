@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyViewController : MonoBehaviour
@@ -7,6 +9,7 @@ public class EnemyViewController : MonoBehaviour
     [SerializeField] float fieldOfViewAngle = 110f;             // Number of degrees, centred on forward, for the enemy see.
     [SerializeField] float minimumDetectableSpeed = 1f;         // The enemy can hear players who have at least this movement speed.
     public bool playerInSight = false;                          // Whether or not the player is currently sighted.
+    public bool playerIsHeard = false;
     public Vector3 personalLastSighting = Vector3.zero;         // Last place this enemy spotted the player.
 
     //  References
@@ -69,7 +72,7 @@ public class EnemyViewController : MonoBehaviour
                     {
                         // ... the player is in sight.
                         playerInSight = true;
-
+                        playerIsHeard = true;
                         // Set the last global sighting is the players current position.
                         globalVariables.playerPosition = player.transform.position;
                     }
@@ -82,9 +85,12 @@ public class EnemyViewController : MonoBehaviour
                 if (CalculatePathLength(player.transform.position) <= hearingRadius.radius)
                 {
                     // ... set the last personal sighting of the player to the player's current position.
+                    playerIsHeard = true;
                     personalLastSighting = player.transform.position;
                 }
             }
+            else
+                playerIsHeard = false;
 
         }
     }
@@ -96,6 +102,7 @@ public class EnemyViewController : MonoBehaviour
         {
             // ... the player is not in sight.
             playerInSight = false;
+            playerIsHeard = false;
         }
     }
 
