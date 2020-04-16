@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
     CapsuleCollider capsule;
     // constants
     const float k_Half = 0.5f;
+    float velocityToggle = 1f;
 
     // Unity Methods
     void Start()
@@ -113,6 +114,14 @@ public class PlayerController : MonoBehaviour
         input.forward = Input.GetAxis("Vertical");
         input.sideward = Input.GetAxis("Horizontal");
         // Keep jump value at 1.0f till it gets recognized by the Jump() function
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            if (velocityToggle == 1f)
+                velocityToggle = 0.25f;
+            else if (velocityToggle == 0.25f)
+                velocityToggle = 1f;
+        }
+            velocity.z *= 0.25f;
         if (input.jump == 0.0f)
             input.jump = Input.GetAxis("Jump");
         crouchingInput = Input.GetKey(KeyCode.C);
@@ -125,7 +134,7 @@ public class PlayerController : MonoBehaviour
         // Adjusting the look direction is done in the Turn() function
         float velInput = Mathf.Clamp((new Vector2(input.forward, input.sideward)).magnitude, 0.0f, 1.0f);
         velocity.z = velInput * moveSettings.forwardVel;
-        if (Input.GetKey(KeyCode.LeftShift)) velocity.z *= 0.25f;
+        velocity.z *= velocityToggle;
         // Update animator
         globalVariables.moveSpeed = velocity.z;
         animator.SetFloat("MoveSpeed", globalVariables.moveSpeed);
