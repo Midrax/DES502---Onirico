@@ -98,7 +98,8 @@ public class EnemyAI : MonoBehaviour
         }
 
         // Set the appropriate speed for the NavMeshAgent.
-        nav.speed = chaseSpeed;
+        if (isChasing)
+            nav.speed = chaseSpeed;
 
         // If near the last personal sighting...
         AlertedWait();

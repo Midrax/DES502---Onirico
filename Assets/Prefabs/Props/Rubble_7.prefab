@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1336450188378708555}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rubble_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1472407981100410624}
   - component: {fileID: 7850660273591659490}
   - component: {fileID: 4829851532662478743}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rubble_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}

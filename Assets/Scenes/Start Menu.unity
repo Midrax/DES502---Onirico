@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 9865147}
   - component: {fileID: 9865146}
   m_Layer: 0
-  m_Name: Butterflies
+  m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

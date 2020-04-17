@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\LastPlayerSighting.cs" />
     <Compile Include="Assets\Scripts\LookAtCamera.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\ProtectCameraFromWallClip.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />

@@ -6,8 +6,6 @@ public class DialogueTrigger : MonoBehaviour {
 
 	public Dialogue dialogue;
 
-    Collider collider;
-    DialogueTrigger dialogueTrigger;
     GlobalVariables globalVariables;
 
     bool canInteract = false;
@@ -16,8 +14,6 @@ public class DialogueTrigger : MonoBehaviour {
     void Start()
     {
         globalVariables = FindObjectOfType<GlobalVariables>();
-        collider = GetComponent<Collider>();
-        dialogueTrigger = GetComponent<DialogueTrigger>();
     }
 
     void Update()

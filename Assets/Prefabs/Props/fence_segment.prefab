@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3288025480214746743}
   - component: {fileID: 4771475883779351297}
   - component: {fileID: 6877180718645609796}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pole_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 3275371385647230560}
   - component: {fileID: 2786500260340426554}
   - component: {fileID: 5249368106353504207}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pole_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 7266010079110694044}
   - component: {fileID: 4838232421116184211}
   - component: {fileID: 4311924580527460717}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pole_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 8661705196386297384}
   - component: {fileID: 8525307660199736541}
   - component: {fileID: 2453576538950223996}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pole_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 8656034209616717242}
   - component: {fileID: 4394809723076841679}
   - component: {fileID: 4777472415672207607}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: full_pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5934175903153020647}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: fence_segment
   m_TagString: Untagged
   m_Icon: {fileID: 0}

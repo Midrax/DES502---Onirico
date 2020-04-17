@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9098463295345900012}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rubble_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2801182716989411782}
   - component: {fileID: 4011608912378802662}
   - component: {fileID: 1096026725734141999}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rubble_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4587322903532625761}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pasted__solidShatter1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

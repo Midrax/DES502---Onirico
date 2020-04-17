@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6596609055981171039}
   - component: {fileID: 4250428069827885500}
   - component: {fileID: 5554073861070078606}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 8731402170281310240}
   - component: {fileID: 2531476033901721113}
   - component: {fileID: 3531299987197647279}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wall4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 1961396612425529509}
   - component: {fileID: 5496432465290410132}
   - component: {fileID: 7292728016271120131}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 4105490700638923322}
   - component: {fileID: 1006629463133711904}
   - component: {fileID: 1104166005166845968}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: chimney
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 1767646729120765632}
   - component: {fileID: 7323255938675831392}
   - component: {fileID: 4415777237008240904}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 1222547026790701561}
   - component: {fileID: 8544762750789593245}
   - component: {fileID: 4159700153750448251}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -570,7 +570,7 @@ GameObject:
   - component: {fileID: 852077961950155233}
   - component: {fileID: 3565419905236616620}
   - component: {fileID: 1197059840126322551}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: back_windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663,7 +663,7 @@ GameObject:
   - component: {fileID: 7247564650655353907}
   - component: {fileID: 804778652948306229}
   - component: {fileID: 6457777050081370232}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,7 +756,7 @@ GameObject:
   - component: {fileID: 3681459886609714030}
   - component: {fileID: 6316659187682835582}
   - component: {fileID: 9188451364790388413}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: front_windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -849,7 +849,7 @@ GameObject:
   - component: {fileID: 4559660180770451374}
   - component: {fileID: 2615688619669532999}
   - component: {fileID: 8105776787197896604}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: gutters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -942,7 +942,7 @@ GameObject:
   - component: {fileID: 7564433927965259385}
   - component: {fileID: 2756757058890548319}
   - component: {fileID: 7520368028031631447}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1032,7 +1032,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5233062984135032704}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Large_House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
