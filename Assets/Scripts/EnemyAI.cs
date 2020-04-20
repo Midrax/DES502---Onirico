@@ -23,6 +23,15 @@ public class EnemyAI : MonoBehaviour
     bool isChasing = false;
     int wayPointIndex = 0;                                  // A counter for the way point array.
 
+    // Added by James:
+    [Header("HighDetect")]
+    public Color detectColor;
+    public Image HighDetect;
+    float colorSmoothing = 6f;
+    float safeTimer = 2f;
+    bool isDetected;
+    bool isSafe;
+
     void Awake()
     {
         // Setting up the references.
@@ -59,6 +68,7 @@ public class EnemyAI : MonoBehaviour
             {
                 isChasing = false;
             }
+
         }
 
         // If the player is heard, but not seen
@@ -69,6 +79,9 @@ public class EnemyAI : MonoBehaviour
                 alertBar.fillAmount = 1;
             }
             Chasing();
+
+            // (James) 
+            isDetected = true;
         }
 
         // Otherwise...
@@ -76,7 +89,23 @@ public class EnemyAI : MonoBehaviour
         {
             // ... patrol.
             Patrolling();
+
+            // (James) 
+            isDetected = false;
+            safe();
         }
+
+        // (James) 
+        if (isDetected)
+        {
+            HighDetect.color = detectColor;
+        }
+        else
+        {
+            HighDetect.color = Color.Lerp(HighDetect.color, Color.clear, colorSmoothing * Time.deltaTime);
+        }
+
+
     }
 
     void Attacking()
@@ -87,6 +116,9 @@ public class EnemyAI : MonoBehaviour
 
     void Chasing()
     {
+        // (James) 
+        isDetected = true;
+
         // Create a vector from the enemy to the last sighting of the player.
         Vector3 sightingDeltaPos = EnemyViewController.personalLastSighting - transform.position;
 
@@ -173,5 +205,17 @@ public class EnemyAI : MonoBehaviour
 
         // Set the destination to the patrolWayPoint.
         nav.destination = patrolWayPoints[wayPointIndex].position;
+    }
+
+    // (James)
+    void safe()
+    {
+        isSafe = true;
+        safeTimer -= Time.deltaTime;
+
+        if (safeTimer <= 0.0f)
+        {
+            isSafe = false;
+        }
     }
 }
