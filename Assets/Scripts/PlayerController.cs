@@ -43,6 +43,11 @@ public class PlayerController : MonoBehaviour
     Vector3 velocity = Vector3.zero;
     // Store if the player is grounded
     bool grounded = false;
+    // Store if the player is crouching
+    bool crouching = false;
+    bool crouchingInput = false;
+    float capsuleHeight;
+    Vector3 capsuleCenter;
     // Stores the raycast hit to the ground
     RaycastHit groundHit = new RaycastHit();
     // Is set if the player is during a jump
@@ -51,10 +56,17 @@ public class PlayerController : MonoBehaviour
     CharacterInput input = new CharacterInput();
     // Reference to camera
     Camera playerCamera;
-    // Rigidbody component
+    // rigidBody component
     Rigidbody rigidBody = null;
     // Reference for animator component
     Animator animator = null;
+    // Reference to global variables.
+    GlobalVariables globalVariables = null;
+    // Capsule collider
+    CapsuleCollider capsule;
+    // constants
+    const float k_Half = 0.5f;
+    float velocityToggle = 1f;
 
     // Unity Methods
     void Start()
@@ -63,6 +75,10 @@ public class PlayerController : MonoBehaviour
         playerCamera = Camera.main;
         rigidBody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        capsule = GetComponent<CapsuleCollider>();
+        capsuleHeight = capsule.height;
+        capsuleCenter = capsule.center;
+        globalVariables = GameObject.FindObjectOfType<GlobalVariables>();
     }
     void Update()
     {
@@ -78,6 +94,7 @@ public class PlayerController : MonoBehaviour
         // Process player running and jumping
         Run();
         Jump();
+        Crouch();
         // Player rotation (on XZ-plane)
         Quaternion playerRotation = transform.rotation;
         // Adjust movement to move along the surface normal of the ground (reduces falling when walking on slopes)
@@ -88,6 +105,7 @@ public class PlayerController : MonoBehaviour
         // Set velocity in player look direction (rotation)
         rigidBody.velocity = playerRotation * new Vector3(0.0f, 0.0f, velocity.z)
                             + new Vector3(0.0f, velocity.y, 0.0f);
+
     }
 
     // Gets control input
@@ -96,8 +114,17 @@ public class PlayerController : MonoBehaviour
         input.forward = Input.GetAxis("Vertical");
         input.sideward = Input.GetAxis("Horizontal");
         // Keep jump value at 1.0f till it gets recognized by the Jump() function
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            if (velocityToggle == 1f)
+                velocityToggle = 0.25f;
+            else if (velocityToggle == 0.25f)
+                velocityToggle = 1f;
+        }
+            velocity.z *= 0.25f;
         if (input.jump == 0.0f)
             input.jump = Input.GetAxis("Jump");
+        crouchingInput = Input.GetKey(KeyCode.C);
     }
 
     // Method processing the running according to the forward (and sideward) input
@@ -107,8 +134,22 @@ public class PlayerController : MonoBehaviour
         // Adjusting the look direction is done in the Turn() function
         float velInput = Mathf.Clamp((new Vector2(input.forward, input.sideward)).magnitude, 0.0f, 1.0f);
         velocity.z = velInput * moveSettings.forwardVel;
+        velocity.z *= velocityToggle;
         // Update animator
-        animator.SetFloat("MoveSpeed", velocity.z);
+        globalVariables.moveSpeed = velocity.z;
+        animator.SetFloat("MoveSpeed", globalVariables.moveSpeed);
+    }
+
+    void Crouch()
+    {
+        ScaleCapsuleForCrouching(crouchingInput);
+        animator.SetBool("IsCrouching", crouchingInput);
+        if (crouchingInput)
+        {
+            velocity.z *= 0.25f;
+            globalVariables.moveSpeed = velocity.z;
+            animator.SetFloat("MoveSpeed", globalVariables.moveSpeed);
+        }
     }
     // Method processing the player turning
     void Turn()
@@ -178,6 +219,44 @@ public class PlayerController : MonoBehaviour
         {
             // Not grounded
             grounded = false;
+        }
+    }
+
+    void ScaleCapsuleForCrouching(bool crouch)
+    {
+        if (grounded && crouch)
+        {
+            if (crouching) return;
+            capsule.height = capsule.height / 2f;
+            capsule.center = capsule.center / 2f;
+            crouching = true;
+        }
+        else
+        {
+            Ray crouchRay = new Ray(rigidBody.position + Vector3.up * capsule.radius * k_Half, Vector3.up);
+            float crouchRayLength = capsule.height - capsule.radius * k_Half;
+            if (Physics.SphereCast(crouchRay, capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+            {
+                crouching = true;
+                return;
+            }
+            capsule.height = capsuleHeight;
+            capsule.center = capsuleCenter;
+            crouching = false;
+        }
+    }
+
+    void PreventStandingInLowHeadroom()
+    {
+        // prevent standing up in crouch-only zones
+        if (!crouching)
+        {
+            Ray crouchRay = new Ray(rigidBody.position + Vector3.up * capsule.radius * k_Half, Vector3.up);
+            float crouchRayLength = capsule.height - capsule.radius * k_Half;
+            if (Physics.SphereCast(crouchRay, capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+            {
+                crouching = true;
+            }
         }
     }
 }
