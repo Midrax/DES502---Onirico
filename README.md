@@ -1,4 +1,4 @@
-# Onirico
+# DES502 - Onirico
 Game Design and Development Course Project 2020
 
 Due to storage limits on Github the release version of the project is currently stored 
